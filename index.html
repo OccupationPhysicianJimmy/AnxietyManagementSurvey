@@ -1,1 +1,143 @@
+export default function AnxietyHomepage() {
+  return (
+    <div className="min-h-screen bg-gradient-to-b from-slate-50 via-white to-slate-100 text-slate-900">
+      <header className="relative overflow-hidden border-b border-slate-200">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(148,163,184,0.18),_transparent_45%)]" />
+        <div className="relative mx-auto max-w-6xl px-6 py-20 md:px-10 md:py-28">
+          <div className="grid items-center gap-12 md:grid-cols-2">
+            <div>
+              <span className="inline-flex rounded-full border border-slate-300 bg-white/80 px-4 py-1 text-sm tracking-wide text-slate-600 shadow-sm backdrop-blur">
+                Anxiety · Mind · Daily Practice
+              </span>
+              <h1 className="mt-6 text-4xl font-bold leading-tight md:text-6xl">
+                杞人研究所
+              </h1>
+              <p className="mt-6 text-lg leading-8 text-slate-600 md:text-xl">
+                一個陪你理解焦慮、辨識身心訊號、找回穩定節奏的地方。
+                焦慮不是脆弱，而是身體與大腦正在努力保護你。
+              </p>
+              <div className="mt-8 flex flex-wrap gap-4">
+                <a
+                  href="#learn"
+                  className="rounded-2xl bg-slate-900 px-6 py-3 text-sm font-medium text-white shadow-lg transition hover:-translate-y-0.5"
+                >
+                  開始認識焦慮
+                </a>
+                <a
+                  href="#tools"
+                  className="rounded-2xl border border-slate-300 bg-white px-6 py-3 text-sm font-medium text-slate-700 shadow-sm transition hover:-translate-y-0.5"
+                >
+                  查看緩解工具
+                </a>
+              </div>
+            </div>
 
+            <div className="grid gap-4">
+              <div className="rounded-[28px] border border-slate-200 bg-white p-6 shadow-xl shadow-slate-200/50">
+                <p className="text-sm text-slate-500">今日提醒</p>
+                <p className="mt-3 text-2xl font-semibold leading-relaxed">
+                  你現在感受到的緊張，
+                  <span className="block">不代表你做不到。</span>
+                </p>
+              </div>
+              <div className="grid gap-4 sm:grid-cols-2">
+                <div className="rounded-3xl border border-slate-200 bg-slate-50 p-5 shadow-sm">
+                  <p className="text-sm text-slate-500">常見感受</p>
+                  <p className="mt-2 text-lg font-semibold">心悸、胸悶、反覆擔心</p>
+                </div>
+                <div className="rounded-3xl border border-slate-200 bg-slate-50 p-5 shadow-sm">
+                  <p className="text-sm text-slate-500">第一步</p>
+                  <p className="mt-2 text-lg font-semibold">先命名你的情緒，再照顧你的呼吸</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <main className="mx-auto max-w-6xl px-6 py-16 md:px-10">
+        <section id="learn" className="grid gap-6 md:grid-cols-3">
+          {[
+            {
+              title: "焦慮是什麼？",
+              text: "焦慮是一種預期威脅時產生的自然反應，可能帶來警覺、緊張與不安。",
+            },
+            {
+              title: "為什麼會發生？",
+              text: "睡眠不足、壓力累積、重大改變、人際關係與過往經驗，都可能讓焦慮更明顯。",
+            },
+            {
+              title: "何時需要幫助？",
+              text: "當焦慮持續影響睡眠、工作、關係或身體狀態時，尋求專業支持是重要的一步。",
+            },
+          ].map((item) => (
+            <div
+              key={item.title}
+              className="rounded-[28px] border border-slate-200 bg-white p-7 shadow-sm transition hover:-translate-y-1 hover:shadow-lg"
+            >
+              <h2 className="text-xl font-semibold">{item.title}</h2>
+              <p className="mt-4 leading-7 text-slate-600">{item.text}</p>
+            </div>
+          ))}
+        </section>
+
+        <section id="tools" className="mt-20">
+          <div className="flex items-end justify-between gap-6">
+            <div>
+              <p className="text-sm uppercase tracking-[0.2em] text-slate-500">Support Tools</p>
+              <h2 className="mt-3 text-3xl font-bold">給自己的三個安定練習</h2>
+            </div>
+          </div>
+
+          <div className="mt-8 grid gap-6 md:grid-cols-3">
+            {[
+              {
+                step: "01",
+                title: "4-6 呼吸法",
+                text: "吸氣 4 秒，吐氣 6 秒，重複 3 到 5 回合，幫助身體慢慢降速。",
+              },
+              {
+                step: "02",
+                title: "5-4-3-2-1 地面化",
+                text: "看見 5 樣東西、摸到 4 樣、聽見 3 種聲音，讓注意力回到此刻。",
+              },
+              {
+                step: "03",
+                title: "寫下擔心清單",
+                text: "把腦中的擔憂拆開，分辨哪些可以處理、哪些暫時只能等待。",
+              },
+            ].map((item) => (
+              <div key={item.step} className="rounded-[28px] bg-slate-900 p-7 text-white shadow-xl">
+                <p className="text-sm text-slate-300">{item.step}</p>
+                <h3 className="mt-3 text-2xl font-semibold">{item.title}</h3>
+                <p className="mt-4 leading-7 text-slate-300">{item.text}</p>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        <section className="mt-20 grid gap-6 md:grid-cols-[1.2fr_0.8fr]">
+          <div className="rounded-[32px] border border-slate-200 bg-white p-8 shadow-sm">
+            <p className="text-sm uppercase tracking-[0.2em] text-slate-500">Message</p>
+            <h2 className="mt-3 text-3xl font-bold">你不需要一個人扛著</h2>
+            <p className="mt-5 text-lg leading-8 text-slate-600">
+              焦慮不是失控的證明，而是一個提醒：你的內在需要被看見、被理解、被安放。
+              在這裡，你可以慢慢學會和焦慮相處，而不是一直和它對抗。
+            </p>
+          </div>
+
+          <div className="rounded-[32px] border border-slate-200 bg-slate-50 p-8 shadow-sm">
+            <p className="text-sm uppercase tracking-[0.2em] text-slate-500">Need Support?</p>
+            <h2 className="mt-3 text-2xl font-bold">當你準備好了，就向外求助</h2>
+            <p className="mt-4 leading-7 text-slate-600">
+              找信任的朋友、家人、心理師或醫師談談。被接住，有時就是復原的開始。
+            </p>
+            <button className="mt-6 rounded-2xl border border-slate-300 bg-white px-5 py-3 text-sm font-medium shadow-sm transition hover:-translate-y-0.5">
+              了解更多資源
+            </button>
+          </div>
+        </section>
+      </main>
+    </div>
+  );
+}
