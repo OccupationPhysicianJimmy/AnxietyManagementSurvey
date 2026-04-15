@@ -126,7 +126,112 @@
       </div>
     </div>
   </div>
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>你沒有錯，只是情緒沒有被接住</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&display=swap');
+        
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            background: linear-gradient(135deg, #2c3e50, #1a252f);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Noto Sans TC', sans-serif;
+            color: #e0f0ff;
+            overflow: hidden;
+        }
 
+        .container {
+            text-align: center;
+            max-width: 680px;
+            padding: 40px 30px;
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 24px;
+            backdrop-filter: blur(12px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .heart {
+            font-size: 68px;
+            margin-bottom: 20px;
+            animation: heartbeat 1.5s infinite;
+            display: inline-block;
+        }
+
+        @keyframes heartbeat {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.15); }
+        }
+
+        h1 {
+            font-size: 32px;
+            margin: 0 0 24px 0;
+            line-height: 1.4;
+            color: #a8d4ff;
+        }
+
+        p {
+            font-size: 20px;
+            line-height: 1.8;
+            margin: 0 0 30px 0;
+            opacity: 0.95;
+        }
+
+        .highlight {
+            color: #7cc4ff;
+            font-weight: 700;
+        }
+
+        .console-btn {
+            display: inline-block;
+            padding: 14px 42px;
+            background: #3498db;
+            color: white;
+            font-size: 18px;
+            font-weight: 500;
+            border-radius: 50px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 20px rgba(52, 152, 219, 0.4);
+        }
+
+        .console-btn:hover {
+            background: #2980b9;
+            transform: translateY(-3px);
+            box-shadow: 0 12px 25px rgba(52, 152, 219, 0.5);
+        }
+
+        .footer {
+            margin-top: 40px;
+            font-size: 14px;
+            opacity: 0.7;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="heart">❤️</div>
+        
+        <h1>你沒有錯</h1>
+        <p>只是你的情緒<br>沒有被好好地接住</p>
+        
+        <a href="Console.html" class="console-btn">返回主控台</a>
+        
+        <div class="footer">
+            溫柔一點對待自己，也溫柔一點對待曾經的你<br>
+            你的感受永遠值得被看見
+        </div>
+    </div>
+</body>
+</html>
   <hr class="qi-divider">
 
   <!-- Tools -->
