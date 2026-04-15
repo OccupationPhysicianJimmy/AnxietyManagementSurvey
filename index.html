@@ -232,6 +232,120 @@
     </div>
 </body>
 </html>
+ <!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>愛情哲語</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;700&display=swap');
+        
+        body {
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #ffe6f0, #f0e6ff, #e6f0ff);
+            font-family: 'Noto Serif TC', serif;
+            overflow: hidden;
+        }
+
+        .container {
+            text-align: center;
+            padding: 40px 60px;
+            background: rgba(255, 255, 255, 0.85);
+            border-radius: 30px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+            max-width: 720px;
+            position: relative;
+        }
+
+        .quote {
+            font-size: 2.4rem;
+            line-height: 1.6;
+            color: #5d3a6e;
+            margin: 0 0 40px 0;
+            font-weight: 700;
+        }
+
+        .highlight {
+            color: #e85d9c;
+            position: relative;
+        }
+
+        .enter-btn {
+            display: inline-block;
+            padding: 16px 48px;
+            font-size: 1.3rem;
+            color: white;
+            background: linear-gradient(45deg, #e85d9c, #b36bd1);
+            border: none;
+            border-radius: 50px;
+            text-decoration: none;
+            transition: all 0.4s ease;
+            box-shadow: 0 10px 30px rgba(232, 93, 156, 0.4);
+            font-family: 'Noto Serif TC', serif;
+        }
+
+        .enter-btn:hover {
+            transform: translateY(-8px) scale(1.05);
+            box-shadow: 0 20px 40px rgba(232, 93, 156, 0.5);
+            background: linear-gradient(45deg, #d14a8a, #9f5bc4);
+        }
+
+        .heart {
+            position: absolute;
+            font-size: 2.5rem;
+            color: #ff6b9d;
+            opacity: 0.2;
+            animation: floatHeart 15s infinite linear;
+        }
+
+        @keyframes floatHeart {
+            0% { transform: translateY(100vh) rotate(0deg); }
+            100% { transform: translateY(-100vh) rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <p class="quote">
+            愛情不是<span class="highlight">對與錯</span>，<br>
+            是彼此互相的<br>
+            <span class="highlight">學習與適應</span>
+        </p>
+        
+        <a href="AboveLove.html" class="enter-btn">
+            進入我們的愛情故事
+        </a>
+    </div>
+
+    <!-- 漂浮愛心背景 -->
+    <script>
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.classList.add('heart');
+            heart.textContent = '♡';
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.animationDuration = (Math.random() * 10 + 12) + 's';
+            heart.style.opacity = Math.random() * 0.3 + 0.15;
+            heart.style.fontSize = (Math.random() * 1.5 + 2) + 'rem';
+            document.body.appendChild(heart);
+
+            setTimeout(() => {
+                heart.remove();
+            }, 25000);
+        }
+
+        // 每400ms生成一個愛心
+        setInterval(createHeart, 400);
+    </script>
+
+</body>
+</html>
   <hr class="qi-divider">
 
   <!-- Tools -->
