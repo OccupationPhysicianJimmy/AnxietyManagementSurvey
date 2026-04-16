@@ -1,1 +1,134 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<title>你交錯朋友，還是你的認知在騙你？</title>
+<style>
+body {
+    font-family: "Noto Sans TC", Arial, sans-serif;
+    background: #f5f7fa;
+    padding: 20px;
+    line-height: 1.6;
+}
+.container {
+    max-width: 700px;
+    margin: auto;
+    background: white;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+h1 {
+    text-align: center;
+}
+.question {
+    margin-top: 20px;
+}
+button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    border: none;
+    background: #4a90e2;
+    color: white;
+    border-radius: 8px;
+    cursor: pointer;
+}
+.result {
+    margin-top: 25px;
+    padding: 15px;
+    border-radius: 10px;
+    background: #eef3f9;
+}
+</style>
+</head>
 
+<body>
+<div class="container">
+<h1>🧠 你交錯朋友，還是你的認知在騙你？</h1>
+<p>請選擇「最直覺的答案」</p>
+
+<form id="quiz">
+
+<div class="question">
+<p>1. 朋友已讀不回一天，你會？</p>
+<label><input type="radio" name="q1" value="A"> A. 他應該在忙</label><br>
+<label><input type="radio" name="q1" value="B"> B. 有點怪怪的</label><br>
+<label><input type="radio" name="q1" value="C"> C. 他不在乎我</label><br>
+<label><input type="radio" name="q1" value="D"> D. 我是不是做錯了</label>
+</div>
+
+<div class="question">
+<p>2. 朋友取消約，你覺得？</p>
+<label><input type="radio" name="q2" value="A"> A. 合理</label><br>
+<label><input type="radio" name="q2" value="B"> B. 有點失望</label><br>
+<label><input type="radio" name="q2" value="C"> C. 他不重視我</label><br>
+<label><input type="radio" name="q2" value="D"> D. 他一直都這樣</label>
+</div>
+
+<div class="question">
+<p>3. 對方語氣變冷，你會？</p>
+<label><input type="radio" name="q3" value="A"> A. 觀察</label><br>
+<label><input type="radio" name="q3" value="B"> B. 問清楚</label><br>
+<label><input type="radio" name="q3" value="C"> C. 保持距離</label><br>
+<label><input type="radio" name="q3" value="D"> D. 記在心裡</label>
+</div>
+
+<div class="question">
+<p>4. 不確定對方是否生氣，你會？</p>
+<label><input type="radio" name="q4" value="A"> A. 覺得自己多想</label><br>
+<label><input type="radio" name="q4" value="B"> B. 找證據</label><br>
+<label><input type="radio" name="q4" value="C"> C. 預設他在不爽</label><br>
+<label><input type="radio" name="q4" value="D"> D. 先冷處理</label>
+</div>
+
+<div class="question">
+<p>5. 你覺得「好朋友應該懂你」嗎？</p>
+<label><input type="radio" name="q5" value="A"> A. 不一定</label><br>
+<label><input type="radio" name="q5" value="B"> B. 有時候</label><br>
+<label><input type="radio" name="q5" value="C"> C. 應該要</label><br>
+<label><input type="radio" name="q5" value="D"> D. 不懂就沒意義</label>
+</div>
+
+<button type="button" onclick="calculate()">看結果</button>
+
+</form>
+
+<div id="result" class="result"></div>
+
+</div>
+
+<script>
+function calculate() {
+    let counts = {A:0, B:0, C:0, D:0};
+
+    let answers = document.querySelectorAll("input[type=radio]:checked");
+    
+    if (answers.length < 5) {
+        alert("請完成所有題目！");
+        return;
+    }
+
+    answers.forEach(ans => {
+        counts[ans.value]++;
+    });
+
+    let max = Object.keys(counts).reduce((a, b) => counts[a] > counts[b] ? a : b);
+
+    let resultText = "";
+
+    if (max === "A") {
+        resultText = "🟢 你屬於『現實校準型』：你較能區分情境與人格，關係判斷較準確。";
+    } else if (max === "B") {
+        resultText = "🟡 你屬於『平衡敏感型』：有同理心，但有時會受情緒影響。";
+    } else if (max === "C") {
+        resultText = "🟠 你屬於『認知放大型』：容易把事件放大成對方人格問題。";
+    } else {
+        resultText = "🔴 你屬於『內在劇場型』：容易腦補與情緒累積，影響關係判斷。";
+    }
+
+    document.getElementById("result").innerHTML = "<h3>你的結果：</h3><p>" + resultText + "</p>";
+}
+</script>
+
+</body>
+</html>
