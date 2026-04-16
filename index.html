@@ -1,115 +1,157 @@
-<!DOCTYPE html>
 
-<html lang="zh-Hant">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>職場溝通案例：靈性與逃避的邊界</title>
-  <style>
-    body { font-family: "Noto Sans TC", Arial, sans-serif; line-height: 1.8; margin: 0; background: #f7f9fb; color: #333; }
-    .container { max-width: 900px; margin: 40px auto; background: #fff; padding: 40px; border-radius: 12px; box-shadow: 0 8px 24px rgba(0,0,0,0.08); }
-    h1, h2, h3 { color: #2c3e50; }
-    h1 { border-bottom: 3px solid #4a90e2; padding-bottom: 10px; }
-    .dialogue { background: #f1f6ff; padding: 15px; border-left: 5px solid #4a90e2; margin: 20px 0; }
-    .highlight { color: #e74c3c; font-weight: bold; }
-    ul { padding-left: 20px; }
-    li { margin-bottom: 8px; }
-    .section { margin-top: 40px; }
-  </style>
-</head>
-<body>
-  <div class="container">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#fff;--bg2:#f5f5f4;--bg3:#ececea;
+  --t1:#1c1917;--t2:#57534e;--t3:#a8a29e;
+  --bd:rgba(28,25,23,0.12);--bd2:rgba(28,25,23,0.22);
+  --r:8px;--rl:12px
+}
+@media(prefers-color-scheme:dark){:root{
+  --bg:#1c1917;--bg2:#292524;--bg3:#3c3836;
+  --t1:#fafaf9;--t2:#a8a29e;--t3:#57534e;
+  --bd:rgba(250,250,249,0.12);--bd2:rgba(250,250,249,0.22)
+}}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:var(--bg2);color:var(--t1);padding:20px 16px 48px;min-height:100vh}
+.page{max-width:800px;margin:0 auto}
 
-```
-<h1>職場溝通案例：靈性語言與情緒逃避的灰色地帶</h1>
+/* nav */
+.nav{display:flex;justify-content:space-between;align-items:center;padding:10px 14px;background:var(--bg);border:0.5px solid var(--bd);border-radius:var(--rl);margin-bottom:20px;gap:12px;flex-wrap:wrap}
+.nav-links{display:flex;gap:8px}
+.nav-link{font-size:12px;color:var(--t2);text-decoration:none;padding:5px 10px;border:0.5px solid var(--bd);border-radius:var(--r);transition:background .15s}
+.nav-link:hover{background:var(--bg2)}
+.nav-stat{font-size:11px;color:var(--t3);display:flex;gap:12px}
+.nav-stat span b{color:var(--t1);font-weight:500}
 
-<div class="section">
-  <h2>誇張版故事（含大量對話）</h2>
+/* header */
+.header{padding:28px 0 24px;border-bottom:0.5px solid var(--bd);margin-bottom:24px}
+.badge{display:inline-block;border:0.5px solid var(--bd2);border-radius:999px;padding:3px 12px;font-size:11px;color:var(--t3);letter-spacing:.05em;margin-bottom:10px}
+h1{font-size:30px;font-weight:500;line-height:1.25;margin-bottom:10px}
+.lead{font-size:14px;line-height:1.8;color:var(--t2);margin-bottom:16px}
+.btn-row{display:flex;gap:8px;flex-wrap:wrap}
+.btn-primary{display:inline-block;background:var(--t1);color:var(--bg);border:none;border-radius:var(--rl);padding:8px 18px;font-size:13px;font-weight:500;cursor:pointer;text-decoration:none;transition:opacity .15s}
+.btn-primary:hover{opacity:.8}
+.btn-outline{display:inline-block;background:var(--bg);color:var(--t1);border:0.5px solid var(--bd2);border-radius:var(--rl);padding:8px 18px;font-size:13px;font-weight:500;cursor:pointer;text-decoration:none;transition:background .15s}
+.btn-outline:hover{background:var(--bg2)}
 
-  <div class="dialogue">
-    <p>阿秀最近在辦公室裡幾乎變成了「行走的靈性語錄機」。</p>
+/* aside cards in header */
+.header-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;align-items:start}
+@media(max-width:580px){.header-grid{grid-template-columns:1fr}}
+.card{background:var(--bg);border:0.5px solid var(--bd);border-radius:var(--rl);padding:16px}
+.card-muted{background:var(--bg2);border:0.5px solid var(--bd);border-radius:var(--rl);padding:14px}
+.label{font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:var(--t3);margin-bottom:6px}
 
-    <p><strong>午休時間</strong></p>
-    <p>阿秀：「你知道嗎？這一切都是安排好的，有意的，必有意思。」</p>
-    <p>小林：「呃……我只是問你報表怎麼還沒交。」</p>
-    <p>阿秀微笑：「報表只是表象，真正的課題，是你對控制的執著。」</p>
-    <p>小林：「……蛤？」</p>
+/* sections */
+.section-label{font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:var(--t3);margin-bottom:10px}
+.grid3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+@media(max-width:580px){.grid3{grid-template-columns:1fr}}
+.card-dark{background:var(--t1);border-radius:var(--rl);padding:16px}
+.divider{border:none;border-top:0.5px solid var(--bd);margin:24px 0}
+.grid2{display:grid;grid-template-columns:1.2fr 0.8fr;gap:12px}
+@media(max-width:580px){.grid2{grid-template-columns:1fr}}
+</style>
 
-    <p><strong>會議中</strong></p>
-    <p>主管：「阿秀，專案延誤兩週，原因是什麼？」</p>
-    <p>阿秀：「我最近在學習放下『我執』，時間其實是不存在的。」</p>
-    <p>主管：「我們的客戶存在。」</p>
+<div class="page">
+  <!-- nav -->
+  <nav class="nav">
+    <div class="nav-links">
+      <a href="https://d8600010-gmail.github.io/DRJimmyHealthExaminationMedicalEducation/" class="nav-link">↩ 首頁</a>
+      <a href="javascript:history.back()" class="nav-link">← 上一頁</a>
+    </div>
+    <div class="nav-stat">
+      <span>今日 <b id="today-count">—</b></span>
+      <span>累計 <b id="total-count">—</b></span>
+    </div>
+  </nav>
 
-    <p><strong>下午茶</strong></p>
-    <p>阿美：「我最近壓力好大，我爸住院了……」</p>
-    <p>阿秀：「這是一種解脫。」</p>
-    <p>阿美：「……什麼？」</p>
-    <p>阿秀：「離開，是靈魂的釋放，我們不需要悲傷。」</p>
-    <p>阿美：「可是他還沒走。」</p>
-    <p>阿秀：「那是你還沒有放下。」</p>
+  <!-- header -->
+  <div class="header">
+    <div class="header-grid">
+      <div>
+        <span class="badge">Anxiety · Mind · Daily Practice</span>
+        <h1>杞人研究所</h1>
+        <p class="lead">一個陪你理解焦慮、辨識身心訊號、找回穩定節奏的地方。<br>焦慮不是脆弱，而是身體與大腦正在努力保護你。</p>
+        <div class="btn-row">
+          <a href="#learn" class="btn-primary">認識焦慮</a>
+          <a href="#tools" class="btn-outline">緩解工具</a>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:8px">
+        <div class="card">
+          <p class="label">今日提醒</p>
+          <p style="font-size:16px;font-weight:500;line-height:1.6">你現在感受到的緊張，<br>不代表你做不到。</p>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
+          <div class="card-muted">
+            <p class="label">常見感受</p>
+            <p style="font-size:12px;font-weight:500;color:var(--t1)">心悸、胸悶、反覆擔心</p>
+          </div>
+          <div class="card-muted">
+            <p class="label">第一步</p>
+            <p style="font-size:12px;font-weight:500;color:var(--t1)">命名情緒，照顧呼吸</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
-    <p><strong>衝突爆發</strong></p>
-    <p>小林：「你到底在幹嘛？你根本沒有在面對現實！」</p>
-    <p>阿秀：「你這是執著，是未開悟。」</p>
-    <p>小林：「那你現在是不用交報告的那種開悟嗎？」</p>
-    <p>阿秀：「人生只有兩種人，一種修行，一種受苦。」</p>
-    <p>小林：「那第三種呢？一邊上班一邊努力活著的人？」</p>
+  <!-- learn -->
+  <div id="learn" style="margin-bottom:24px">
+    <p class="section-label">了解焦慮</p>
+    <div class="grid3">
+      <div class="card">
+        <p style="font-size:14px;font-weight:500;margin-bottom:6px">焦慮是什麼？</p>
+        <p style="font-size:13px;line-height:1.7;color:var(--t2)">預期威脅時的自然反應，帶來警覺、緊張與不安。</p>
+      </div>
+      <div class="card">
+        <p style="font-size:14px;font-weight:500;margin-bottom:6px">為什麼會發生？</p>
+        <p style="font-size:13px;line-height:1.7;color:var(--t2)">睡眠不足、壓力累積、重大改變與過往經驗都可能觸發。</p>
+      </div>
+      <div class="card">
+        <p style="font-size:14px;font-weight:500;margin-bottom:6px">何時需要幫助？</p>
+        <p style="font-size:13px;line-height:1.7;color:var(--t2)">當焦慮持續影響睡眠、工作或人際，請尋求專業支持。</p>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- tools -->
+  <div id="tools" style="margin-bottom:24px">
+    <p class="section-label">安定練習</p>
+    <div class="grid3">
+      <div class="card-dark">
+        <p style="font-size:10px;color:rgba(255,255,255,.4);margin-bottom:8px">01</p>
+        <p style="font-size:14px;font-weight:500;color:var(--bg);margin-bottom:6px">4-6 呼吸法</p>
+        <p style="font-size:12px;line-height:1.7;color:rgba(255,255,255,.55)">吸氣 4 秒，吐氣 6 秒，重複 3–5 回合，幫助身體慢慢降速。</p>
+      </div>
+      <div class="card-dark">
+        <p style="font-size:10px;color:rgba(255,255,255,.4);margin-bottom:8px">02</p>
+        <p style="font-size:14px;font-weight:500;color:var(--bg);margin-bottom:6px">5-4-3-2-1 地面化</p>
+        <p style="font-size:12px;line-height:1.7;color:rgba(255,255,255,.55)">看 5 樣、摸 4 樣、聽 3 種聲音，讓注意力回到此刻。</p>
+      </div>
+      <div class="card-dark">
+        <p style="font-size:10px;color:rgba(255,255,255,.4);margin-bottom:8px">03</p>
+        <p style="font-size:14px;font-weight:500;color:var(--bg);margin-bottom:6px">寫下擔心清單</p>
+        <p style="font-size:12px;line-height:1.7;color:rgba(255,255,255,.55)">把擔憂拆開，分辨哪些可處理、哪些暫時只能等待。</p>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- bottom -->
+  <div class="grid2">
+    <div class="card">
+      <p class="section-label">Message</p>
+      <p style="font-size:18px;font-weight:500;margin:4px 0 10px">你不需要一個人扛著</p>
+      <p style="font-size:13px;line-height:1.75;color:var(--t2)">焦慮不是失控的證明，而是提醒你的內在需要被看見。在這裡，你可以學會和焦慮相處，而不是一直對抗它。</p>
+    </div>
+    <div class="card-muted">
+      <p class="section-label">需要支持？</p>
+      <p style="font-size:15px;font-weight:500;margin:4px 0 8px">準備好了，就向外求助</p>
+      <p style="font-size:13px;line-height:1.75;color:var(--t2);margin-bottom:14px">和信任的人、心理師或醫師談談——被接住，是復原的開始。</p>
+      <a href="#" class="btn-outline" style="font-size:12px;padding:7px 14px">了解更多資源</a>
+    </div>
   </div>
 </div>
-
-<div class="section">
-  <h2>專業解析（職場溝通 + 心理衛教）</h2>
-
-  <h3>1. 認知二分法</h3>
-  <p>將世界簡化為對立狀態，例如「有修行 vs 沒修行」，這是一種<span class="highlight">認知扭曲</span>，會降低溝通彈性。</p>
-
-  <h3>2. 情緒否認</h3>
-  <p>用「這是解脫」回應他人痛苦，屬於<span class="highlight">情緒無效化</span>，容易破壞關係。</p>
-
-  <h3>3. 靈性逃避</h3>
-  <p>用靈性語言逃避責任與情緒，例如：</p>
-  <ul>
-    <li>用「一切安排」逃避責任</li>
-    <li>用「放下」合理化不作為</li>
-    <li>用「解脫」淡化失落</li>
-  </ul>
-
-  <h3>4. 責任外移</h3>
-  <p>將工作問題歸因於抽象概念，會被職場解讀為不可靠。</p>
-</div>
-
-<div class="section">
-  <h2>實務建議</h2>
-
-  <h3>對阿秀型員工</h3>
-  <ul>
-    <li>避免對抗，轉回具體行為</li>
-    <li>例：「我理解你的想法，但我們需要明確時程」</li>
-  </ul>
-
-  <h3>對同事</h3>
-  <ul>
-    <li>建立界線：「我需要被理解，而不是被解釋」</li>
-  </ul>
-
-  <h3>對主管</h3>
-  <ul>
-    <li>區分信念與績效</li>
-    <li>例：「價值觀可尊重，但交付標準不變」</li>
-  </ul>
-</div>
-
-<div class="section">
-  <h2>核心結論</h2>
-  <p>
-    靈性不是問題，問題是是否用來<span class="highlight">面對人生</span>，還是<span class="highlight">逃避人生</span>。
-  </p>
-  <p>
-    真正成熟的狀態，是既能放下，也能負責；既能理解無常，也能完成報表。
-  </p>
-</div>
-```
-
-  </div>
-</body>
-</html>
