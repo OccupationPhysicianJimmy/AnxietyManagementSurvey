@@ -68,6 +68,8 @@
   .grid-2-sm { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
   .grid-3 { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 12px; }
   .grid-4 { display: grid; grid-template-columns: repeat(4, minmax(0,1fr)); gap: 12px; }
+  .grid-5 { display: grid; grid-template-columns: repeat(5, minmax(0,1fr)); gap: 12px; }
+  @media (max-width: 700px) { .grid-5 { grid-template-columns: 1fr 1fr; } }
   .grid-bottom { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 12px; }
   .article-link { display: flex; flex-direction: column; gap: 6px; background: var(--color-background-primary); border: 0.5px solid var(--color-border-tertiary); border-radius: var(--border-radius-lg); padding: 16px; text-decoration: none; color: inherit; transition: border-color .15s, background .15s; }
   .article-link:hover { border-color: var(--color-border-secondary); background: var(--color-background-secondary); }
@@ -138,7 +140,7 @@
   <!-- Articles -->
   <div id="articles">
     <p class="qi-section-label">延伸閱讀</p>
-    <div class="grid-4" style="margin-top:12px;">
+    <div class="grid-5" style="margin-top:12px;">
       <a href="AboutSpirit.html" class="article-link">
         <span class="al-tag">心靈</span>
         <span class="al-title">關於心靈</span>
@@ -157,6 +159,11 @@
       <a href="HealingYourHeart.html" class="article-link">
         <span class="al-tag">療癒</span>
         <span class="al-title">修復你的心</span>
+        <span class="al-arrow">→</span>
+      </a>
+      <a href="MalCognition.html" class="article-link">
+        <span class="al-tag">認知</span>
+        <span class="al-title">是你交錯朋友，還是大腦欺騙你</span>
         <span class="al-arrow">→</span>
       </a>
     </div>
