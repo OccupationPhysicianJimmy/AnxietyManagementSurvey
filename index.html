@@ -1,157 +1,209 @@
-
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>杞人研究所</title>
+ <nav class="top-nav">
+  <div class="nav-left">
+    <a href="https://d8600010-gmail.github.io/DRJimmyHealthExaminationMedicalEducation/" class="nav-link">🏠 <span>回到首頁</span></a>
+    <a href="javascript:history.back()" class="nav-link">⬅️ <span>回到上一頁</span></a>
+  </div>
+  <div class="visitor-badge">
+    <span class="vb-label">👥 今日到訪</span>
+    <span class="vb-count" id="today-count">—</span>
+    <span class="vb-sub">累計 <span id="total-count">—</span> 人次</span>
+  </div>
+</nav>
 <style>
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-:root{
-  --bg:#fff;--bg2:#f5f5f4;--bg3:#ececea;
-  --t1:#1c1917;--t2:#57534e;--t3:#a8a29e;
-  --bd:rgba(28,25,23,0.12);--bd2:rgba(28,25,23,0.22);
-  --r:8px;--rl:12px
-}
-@media(prefers-color-scheme:dark){:root{
-  --bg:#1c1917;--bg2:#292524;--bg3:#3c3836;
-  --t1:#fafaf9;--t2:#a8a29e;--t3:#57534e;
-  --bd:rgba(250,250,249,0.12);--bd2:rgba(250,250,249,0.22)
-}}
-body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:var(--bg2);color:var(--t1);padding:20px 16px 48px;min-height:100vh}
-.page{max-width:800px;margin:0 auto}
-
-/* nav */
-.nav{display:flex;justify-content:space-between;align-items:center;padding:10px 14px;background:var(--bg);border:0.5px solid var(--bd);border-radius:var(--rl);margin-bottom:20px;gap:12px;flex-wrap:wrap}
-.nav-links{display:flex;gap:8px}
-.nav-link{font-size:12px;color:var(--t2);text-decoration:none;padding:5px 10px;border:0.5px solid var(--bd);border-radius:var(--r);transition:background .15s}
-.nav-link:hover{background:var(--bg2)}
-.nav-stat{font-size:11px;color:var(--t3);display:flex;gap:12px}
-.nav-stat span b{color:var(--t1);font-weight:500}
-
-/* header */
-.header{padding:28px 0 24px;border-bottom:0.5px solid var(--bd);margin-bottom:24px}
-.badge{display:inline-block;border:0.5px solid var(--bd2);border-radius:999px;padding:3px 12px;font-size:11px;color:var(--t3);letter-spacing:.05em;margin-bottom:10px}
-h1{font-size:30px;font-weight:500;line-height:1.25;margin-bottom:10px}
-.lead{font-size:14px;line-height:1.8;color:var(--t2);margin-bottom:16px}
-.btn-row{display:flex;gap:8px;flex-wrap:wrap}
-.btn-primary{display:inline-block;background:var(--t1);color:var(--bg);border:none;border-radius:var(--rl);padding:8px 18px;font-size:13px;font-weight:500;cursor:pointer;text-decoration:none;transition:opacity .15s}
-.btn-primary:hover{opacity:.8}
-.btn-outline{display:inline-block;background:var(--bg);color:var(--t1);border:0.5px solid var(--bd2);border-radius:var(--rl);padding:8px 18px;font-size:13px;font-weight:500;cursor:pointer;text-decoration:none;transition:background .15s}
-.btn-outline:hover{background:var(--bg2)}
-
-/* aside cards in header */
-.header-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;align-items:start}
-@media(max-width:580px){.header-grid{grid-template-columns:1fr}}
-.card{background:var(--bg);border:0.5px solid var(--bd);border-radius:var(--rl);padding:16px}
-.card-muted{background:var(--bg2);border:0.5px solid var(--bd);border-radius:var(--rl);padding:14px}
-.label{font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:var(--t3);margin-bottom:6px}
-
-/* sections */
-.section-label{font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:var(--t3);margin-bottom:10px}
-.grid3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
-@media(max-width:580px){.grid3{grid-template-columns:1fr}}
-.card-dark{background:var(--t1);border-radius:var(--rl);padding:16px}
-.divider{border:none;border-top:0.5px solid var(--bd);margin:24px 0}
-.grid2{display:grid;grid-template-columns:1.2fr 0.8fr;gap:12px}
-@media(max-width:580px){.grid2{grid-template-columns:1fr}}
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --color-background-primary: #ffffff;
+    --color-background-secondary: #f5f5f4;
+    --color-text-primary: #1c1917;
+    --color-text-secondary: #57534e;
+    --color-text-tertiary: #a8a29e;
+    --color-border-tertiary: rgba(28,25,23,0.12);
+    --color-border-secondary: rgba(28,25,23,0.22);
+    --border-radius-md: 8px;
+    --border-radius-lg: 12px;
+    --font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --color-background-primary: #1c1917;
+      --color-background-secondary: #292524;
+      --color-text-primary: #fafaf9;
+      --color-text-secondary: #a8a29e;
+      --color-text-tertiary: #57534e;
+      --color-border-tertiary: rgba(250,250,249,0.12);
+      --color-border-secondary: rgba(250,250,249,0.22);
+    }
+  }
+  body {
+    font-family: var(--font-sans);
+    background: var(--color-background-secondary);
+    color: var(--color-text-primary);
+    padding: 24px 16px 48px;
+    min-height: 100vh;
+  }
+  .page { max-width: 860px; margin: 0 auto; }
+  .qi-badge { display: inline-block; border: 0.5px solid var(--color-border-secondary); background: var(--color-background-primary); border-radius: 999px; padding: 4px 14px; font-size: 12px; color: var(--color-text-secondary); letter-spacing: 0.05em; }
+  .qi-h1 { font-size: 36px; font-weight: 500; line-height: 1.25; margin: 12px 0 0; }
+  .qi-lead { font-size: 15px; line-height: 1.8; color: var(--color-text-secondary); margin: 12px 0 0; }
+  .qi-btn-primary { display: inline-block; background: var(--color-text-primary); color: var(--color-background-primary); border: none; border-radius: var(--border-radius-lg); padding: 10px 20px; font-size: 13px; font-weight: 500; cursor: pointer; text-decoration: none; transition: opacity .15s; }
+  .qi-btn-primary:hover { opacity: .8; }
+  .qi-btn-outline { display: inline-block; background: var(--color-background-primary); color: var(--color-text-primary); border: 0.5px solid var(--color-border-secondary); border-radius: var(--border-radius-lg); padding: 10px 20px; font-size: 13px; font-weight: 500; cursor: pointer; text-decoration: none; transition: background .15s; }
+  .qi-btn-outline:hover { background: var(--color-background-secondary); }
+  .qi-card { background: var(--color-background-primary); border: 0.5px solid var(--color-border-tertiary); border-radius: var(--border-radius-lg); padding: 20px; }
+  .qi-card-dark { background: var(--color-text-primary); border-radius: var(--border-radius-lg); padding: 20px; }
+  .qi-label { font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--color-text-tertiary); }
+  .qi-section-label { font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--color-text-tertiary); margin: 0 0 8px; }
+  .qi-h2 { font-size: 22px; font-weight: 500; margin: 0; }
+  .qi-h3 { font-size: 16px; font-weight: 500; margin: 10px 0 0; }
+  .qi-body { font-size: 14px; line-height: 1.75; color: var(--color-text-secondary); margin: 8px 0 0; }
+  .qi-step { font-size: 12px; color: var(--color-text-tertiary); margin: 0; }
+  .qi-divider { border: none; border-top: 0.5px solid var(--color-border-tertiary); margin: 24px 0; }
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; align-items: start; }
+  .grid-2-sm { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .grid-3 { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 12px; }
+  .grid-4 { display: grid; grid-template-columns: repeat(4, minmax(0,1fr)); gap: 12px; }
+  .grid-bottom { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 12px; }
+  .article-link { display: flex; flex-direction: column; gap: 6px; background: var(--color-background-primary); border: 0.5px solid var(--color-border-tertiary); border-radius: var(--border-radius-lg); padding: 16px; text-decoration: none; color: inherit; transition: border-color .15s, background .15s; }
+  .article-link:hover { border-color: var(--color-border-secondary); background: var(--color-background-secondary); }
+  .article-link .al-tag { font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--color-text-tertiary); }
+  .article-link .al-title { font-size: 14px; font-weight: 500; color: var(--color-text-primary); line-height: 1.5; }
+  .article-link .al-arrow { font-size: 12px; color: var(--color-text-tertiary); margin-top: 4px; }
+  @media (max-width: 600px) {
+    .grid-2, .grid-3, .grid-4, .grid-bottom { grid-template-columns: 1fr; }
+    .qi-h1 { font-size: 28px; }
+  }
 </style>
-
+</head>
+<body>
 <div class="page">
-  <!-- nav -->
-  <nav class="nav">
-    <div class="nav-links">
-      <a href="https://d8600010-gmail.github.io/DRJimmyHealthExaminationMedicalEducation/" class="nav-link">↩ 首頁</a>
-      <a href="javascript:history.back()" class="nav-link">← 上一頁</a>
-    </div>
-    <div class="nav-stat">
-      <span>今日 <b id="today-count">—</b></span>
-      <span>累計 <b id="total-count">—</b></span>
-    </div>
-  </nav>
 
-  <!-- header -->
-  <div class="header">
-    <div class="header-grid">
+  <!-- Header -->
+  <div style="border-bottom: 0.5px solid var(--color-border-tertiary); padding: 32px 0 28px;">
+    <div class="grid-2">
       <div>
-        <span class="badge">Anxiety · Mind · Daily Practice</span>
-        <h1>杞人研究所</h1>
-        <p class="lead">一個陪你理解焦慮、辨識身心訊號、找回穩定節奏的地方。<br>焦慮不是脆弱，而是身體與大腦正在努力保護你。</p>
-        <div class="btn-row">
-          <a href="#learn" class="btn-primary">認識焦慮</a>
-          <a href="#tools" class="btn-outline">緩解工具</a>
+        <span class="qi-badge">Anxiety · Mind · Daily Practice</span>
+        <h1 class="qi-h1">杞人研究所</h1>
+        <p class="qi-lead">一個陪你理解焦慮、辨識身心訊號、找回穩定節奏的地方。<br>焦慮不是脆弱，而是身體與大腦正在努力保護你。</p>
+        <div style="display:flex;gap:10px;margin-top:18px;flex-wrap:wrap;">
+          <a href="#learn" class="qi-btn-primary">開始認識焦慮</a>
+          <a href="#tools" class="qi-btn-outline">查看緩解工具</a>
         </div>
       </div>
-      <div style="display:flex;flex-direction:column;gap:8px">
-        <div class="card">
-          <p class="label">今日提醒</p>
-          <p style="font-size:16px;font-weight:500;line-height:1.6">你現在感受到的緊張，<br>不代表你做不到。</p>
+      <div style="display:flex;flex-direction:column;gap:10px;">
+        <div class="qi-card">
+          <p class="qi-label">今日提醒</p>
+          <p style="font-size:18px;font-weight:500;line-height:1.6;margin:10px 0 0;">你現在感受到的緊張，<br>不代表你做不到。</p>
         </div>
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
-          <div class="card-muted">
-            <p class="label">常見感受</p>
-            <p style="font-size:12px;font-weight:500;color:var(--t1)">心悸、胸悶、反覆擔心</p>
+        <div class="grid-2-sm">
+          <div class="qi-card" style="background:var(--color-background-secondary);">
+            <p class="qi-label">常見感受</p>
+            <p style="font-size:13px;font-weight:500;margin:6px 0 0;">心悸、胸悶、反覆擔心</p>
           </div>
-          <div class="card-muted">
-            <p class="label">第一步</p>
-            <p style="font-size:12px;font-weight:500;color:var(--t1)">命名情緒，照顧呼吸</p>
+          <div class="qi-card" style="background:var(--color-background-secondary);">
+            <p class="qi-label">第一步</p>
+            <p style="font-size:13px;font-weight:500;margin:6px 0 0;">先命名情緒，再照顧呼吸</p>
           </div>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- learn -->
-  <div id="learn" style="margin-bottom:24px">
-    <p class="section-label">了解焦慮</p>
-    <div class="grid3">
-      <div class="card">
-        <p style="font-size:14px;font-weight:500;margin-bottom:6px">焦慮是什麼？</p>
-        <p style="font-size:13px;line-height:1.7;color:var(--t2)">預期威脅時的自然反應，帶來警覺、緊張與不安。</p>
+  <!-- Learn -->
+  <div id="learn" style="padding-top:28px;">
+    <p class="qi-section-label">了解焦慮</p>
+    <div class="grid-3" style="margin-top:12px;">
+      <div class="qi-card">
+        <h3 class="qi-h3">焦慮是什麼？</h3>
+        <p class="qi-body">焦慮是一種預期威脅時產生的自然反應，可能帶來警覺、緊張與不安。</p>
       </div>
-      <div class="card">
-        <p style="font-size:14px;font-weight:500;margin-bottom:6px">為什麼會發生？</p>
-        <p style="font-size:13px;line-height:1.7;color:var(--t2)">睡眠不足、壓力累積、重大改變與過往經驗都可能觸發。</p>
+      <div class="qi-card">
+        <h3 class="qi-h3">為什麼會發生？</h3>
+        <p class="qi-body">睡眠不足、壓力累積、重大改變、人際關係與過往經驗，都可能讓焦慮更明顯。</p>
       </div>
-      <div class="card">
-        <p style="font-size:14px;font-weight:500;margin-bottom:6px">何時需要幫助？</p>
-        <p style="font-size:13px;line-height:1.7;color:var(--t2)">當焦慮持續影響睡眠、工作或人際，請尋求專業支持。</p>
-      </div>
-    </div>
-  </div>
-
-  <hr class="divider">
-
-  <!-- tools -->
-  <div id="tools" style="margin-bottom:24px">
-    <p class="section-label">安定練習</p>
-    <div class="grid3">
-      <div class="card-dark">
-        <p style="font-size:10px;color:rgba(255,255,255,.4);margin-bottom:8px">01</p>
-        <p style="font-size:14px;font-weight:500;color:var(--bg);margin-bottom:6px">4-6 呼吸法</p>
-        <p style="font-size:12px;line-height:1.7;color:rgba(255,255,255,.55)">吸氣 4 秒，吐氣 6 秒，重複 3–5 回合，幫助身體慢慢降速。</p>
-      </div>
-      <div class="card-dark">
-        <p style="font-size:10px;color:rgba(255,255,255,.4);margin-bottom:8px">02</p>
-        <p style="font-size:14px;font-weight:500;color:var(--bg);margin-bottom:6px">5-4-3-2-1 地面化</p>
-        <p style="font-size:12px;line-height:1.7;color:rgba(255,255,255,.55)">看 5 樣、摸 4 樣、聽 3 種聲音，讓注意力回到此刻。</p>
-      </div>
-      <div class="card-dark">
-        <p style="font-size:10px;color:rgba(255,255,255,.4);margin-bottom:8px">03</p>
-        <p style="font-size:14px;font-weight:500;color:var(--bg);margin-bottom:6px">寫下擔心清單</p>
-        <p style="font-size:12px;line-height:1.7;color:rgba(255,255,255,.55)">把擔憂拆開，分辨哪些可處理、哪些暫時只能等待。</p>
+      <div class="qi-card">
+        <h3 class="qi-h3">何時需要幫助？</h3>
+        <p class="qi-body">當焦慮持續影響睡眠、工作、關係或身體狀態時，尋求專業支持是重要的一步。</p>
       </div>
     </div>
   </div>
 
-  <hr class="divider">
+  <hr class="qi-divider">
 
-  <!-- bottom -->
-  <div class="grid2">
-    <div class="card">
-      <p class="section-label">Message</p>
-      <p style="font-size:18px;font-weight:500;margin:4px 0 10px">你不需要一個人扛著</p>
-      <p style="font-size:13px;line-height:1.75;color:var(--t2)">焦慮不是失控的證明，而是提醒你的內在需要被看見。在這裡，你可以學會和焦慮相處，而不是一直對抗它。</p>
-    </div>
-    <div class="card-muted">
-      <p class="section-label">需要支持？</p>
-      <p style="font-size:15px;font-weight:500;margin:4px 0 8px">準備好了，就向外求助</p>
-      <p style="font-size:13px;line-height:1.75;color:var(--t2);margin-bottom:14px">和信任的人、心理師或醫師談談——被接住，是復原的開始。</p>
-      <a href="#" class="btn-outline" style="font-size:12px;padding:7px 14px">了解更多資源</a>
+  <!-- Articles -->
+  <div id="articles">
+    <p class="qi-section-label">延伸閱讀</p>
+    <div class="grid-4" style="margin-top:12px;">
+      <a href="AboutSpirit.html" class="article-link">
+        <span class="al-tag">心靈</span>
+        <span class="al-title">關於心靈</span>
+        <span class="al-arrow">→</span>
+      </a>
+      <a href="AboutLove.html" class="article-link">
+        <span class="al-tag">愛情</span>
+        <span class="al-title">關於愛情</span>
+        <span class="al-arrow">→</span>
+      </a>
+      <a href="ConsoleOther.html" class="article-link">
+        <span class="al-tag">主控台</span>
+        <span class="al-title">其他資源</span>
+        <span class="al-arrow">→</span>
+      </a>
+      <a href="HealingYourHeart.html" class="article-link">
+        <span class="al-tag">療癒</span>
+        <span class="al-title">修復你的心</span>
+        <span class="al-arrow">→</span>
+      </a>
     </div>
   </div>
+
+  <hr class="qi-divider">
+
+  <!-- Tools -->
+  <div id="tools">
+    <p class="qi-section-label">Support Tools</p>
+    <h2 class="qi-h2">給自己的三個安定練習</h2>
+    <div class="grid-3" style="margin-top:16px;">
+      <div class="qi-card-dark">
+        <p class="qi-step" style="color:rgba(255,255,255,0.45);">01</p>
+        <h3 style="font-size:16px;font-weight:500;color:var(--color-background-primary);margin:10px 0 0;">4-6 呼吸法</h3>
+        <p style="font-size:13px;line-height:1.75;color:rgba(255,255,255,0.6);margin:8px 0 0;">吸氣 4 秒，吐氣 6 秒，重複 3 到 5 回合，幫助身體慢慢降速。</p>
+      </div>
+      <div class="qi-card-dark">
+        <p class="qi-step" style="color:rgba(255,255,255,0.45);">02</p>
+        <h3 style="font-size:16px;font-weight:500;color:var(--color-background-primary);margin:10px 0 0;">5-4-3-2-1 地面化</h3>
+        <p style="font-size:13px;line-height:1.75;color:rgba(255,255,255,0.6);margin:8px 0 0;">看見 5 樣東西、摸到 4 樣、聽見 3 種聲音，讓注意力回到此刻。</p>
+      </div>
+      <div class="qi-card-dark">
+        <p class="qi-step" style="color:rgba(255,255,255,0.45);">03</p>
+        <h3 style="font-size:16px;font-weight:500;color:var(--color-background-primary);margin:10px 0 0;">寫下擔心清單</h3>
+        <p style="font-size:13px;line-height:1.75;color:rgba(255,255,255,0.6);margin:8px 0 0;">把腦中的擔憂拆開，分辨哪些可以處理、哪些暫時只能等待。</p>
+      </div>
+    </div>
+  </div>
+
+  <hr class="qi-divider">
+
+  <!-- Bottom -->
+  <div class="grid-bottom">
+    <div class="qi-card">
+      <p class="qi-section-label">Message</p>
+      <h2 class="qi-h2" style="margin-top:6px;">你不需要一個人扛著</h2>
+      <p class="qi-body" style="margin-top:10px;">焦慮不是失控的證明，而是一個提醒：你的內在需要被看見、被理解、被安放。在這裡，你可以慢慢學會和焦慮相處，而不是一直和它對抗。</p>
+    </div>
+    <div class="qi-card" style="background:var(--color-background-secondary);">
+      <p class="qi-section-label">Need Support?</p>
+      <h2 style="font-size:18px;font-weight:500;margin:6px 0 0;">當你準備好了，就向外求助</h2>
+      <p class="qi-body" style="margin-top:8px;">找信任的朋友、家人、心理師或醫師談談。被接住，有時就是復原的開始。</p>
+      <button class="qi-btn-outline" style="margin-top:16px;font-size:13px;">了解更多資源</button>
+    </div>
+  </div>
+
 </div>
+</body>
+</html>
