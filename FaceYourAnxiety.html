@@ -1,1 +1,184 @@
+<!DOCTYPE html>
 
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<title>反直覺提問能力檢測</title>
+<style>
+body {
+    font-family: "Segoe UI", Arial;
+    background: #f4f6f8;
+    margin: 0;
+    padding: 20px;
+}
+.container {
+    max-width: 800px;
+    background: white;
+    margin: auto;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+h1 {
+    text-align: center;
+}
+.progress {
+    width: 100%;
+    background: #ddd;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+.progress-bar {
+    height: 12px;
+    width: 0%;
+    background: #4caf50;
+    border-radius: 10px;
+    transition: 0.3s;
+}
+.question {
+    margin-bottom: 20px;
+}
+button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    border: none;
+    background: #4caf50;
+    color: white;
+    border-radius: 6px;
+    cursor: pointer;
+}
+.result {
+    margin-top: 20px;
+    padding: 15px;
+    background: #eef;
+    border-radius: 8px;
+    display: none;
+}
+.feedback {
+    font-size: 14px;
+    color: #666;
+    margin-top: 5px;
+}
+</style>
+</head>
+
+<body>
+<div class="container">
+<h1>🧠 反直覺提問能力檢測</h1>
+
+<div class="progress">
+    <div class="progress-bar" id="progressBar"></div>
+</div>
+
+<form id="quizForm">
+
+<div class="question">
+<p>1️⃣ 遇到問題時，你會：</p>
+<label><input type="radio" name="q1" value="A"> 立刻找答案</label><br>
+<label><input type="radio" name="q1" value="B"> 自己先想</label><br>
+<label><input type="radio" name="q1" value="C"> 釐清問題本身</label><br>
+<label><input type="radio" name="q1" value="D"> 先放著</label>
+<div class="feedback" id="f1"></div>
+</div>
+
+<div class="question">
+<p>2️⃣ 事情不順時，你會想：</p>
+<label><input type="radio" name="q2" value="A"> 誰錯了</label><br>
+<label><input type="radio" name="q2" value="B"> 怎麼補救</label><br>
+<label><input type="radio" name="q2" value="C"> 為什麼發生</label><br>
+<label><input type="radio" name="q2" value="D"> 避免下次</label>
+<div class="feedback" id="f2"></div>
+</div>
+
+<div class="question">
+<p>3️⃣ 聽到新點子時：</p>
+<label><input type="radio" name="q3" value="A"> 不可能</label><br>
+<label><input type="radio" name="q3" value="B"> 成本太高</label><br>
+<label><input type="radio" name="q3" value="C"> 有沒有可行部分</label><br>
+<label><input type="radio" name="q3" value="D"> 如果可以呢？</label>
+<div class="feedback" id="f3"></div>
+</div>
+
+<div class="question">
+<p>4️⃣ 會議中有疑問時：</p>
+<label><input type="radio" name="q4" value="A"> 不問</label><br>
+<label><input type="radio" name="q4" value="B"> 會後問</label><br>
+<label><input type="radio" name="q4" value="C"> 委婉問</label><br>
+<label><input type="radio" name="q4" value="D"> 直接問</label>
+<div class="feedback" id="f4"></div>
+</div>
+
+<div class="question">
+<p>5️⃣ 面對沒有答案的問題：</p>
+<label><input type="radio" name="q5" value="A"> 焦慮</label><br>
+<label><input type="radio" name="q5" value="B"> 想快結束</label><br>
+<label><input type="radio" name="q5" value="C"> 慢慢探索</label><br>
+<label><input type="radio" name="q5" value="D"> 感到興奮</label>
+<div class="feedback" id="f5"></div>
+</div>
+
+<button type="button" onclick="calculateResult()">查看結果</button>
+
+</form>
+
+<div class="result" id="result"></div>
+
+</div>
+
+<script>
+const feedbackMap = {
+A: "👉 你偏向快速找答案，但可能忽略真正問題",
+B: "👉 你有思考，但仍偏向解題模式",
+C: "👉 你開始進入提問核心能力",
+D: "👉 你具備創新型提問思維"
+};
+
+const totalQuestions = 5;
+const inputs = document.querySelectorAll("input");
+
+inputs.forEach(input => {
+    input.addEventListener("change", updateProgress);
+    input.addEventListener("change", showFeedback);
+});
+
+function updateProgress() {
+    let answered = document.querySelectorAll("input:checked").length;
+    let percent = (answered / totalQuestions) * 100;
+    document.getElementById("progressBar").style.width = percent + "%";
+}
+
+function showFeedback(e) {
+    let qName = e.target.name;
+    let value = e.target.value;
+    let feedbackEl = document.getElementById("f" + qName.replace("q",""));
+    feedbackEl.innerText = feedbackMap[value];
+}
+
+function calculateResult() {
+    let answers = document.querySelectorAll("input:checked");
+    if (answers.length < totalQuestions) {
+        alert("請完成所有題目");
+        return;
+    }
+
+    let count = {A:0, B:0, C:0, D:0};
+
+    answers.forEach(a => count[a.value]++);
+
+    let resultText = "";
+
+    if (count.A + count.B > count.C + count.D) {
+        resultText = "🧠 你偏向「答案導向型」：效率高，但可能問錯問題";
+    } else if (count.C >= count.D) {
+        resultText = "🧠 你是「分析提問型」：理解深入，但需加強行動";
+    } else {
+        resultText = "🧠 你是「創新提問型」：能打開新可能，但需平衡現實";
+    }
+
+    document.getElementById("result").style.display = "block";
+    document.getElementById("result").innerHTML = "<b>結果：</b><br>" + resultText + "<br><br>👉 反思：你是在找答案，還是在問對問題？";
+}
+</script>
+
+</body>
+</html>
