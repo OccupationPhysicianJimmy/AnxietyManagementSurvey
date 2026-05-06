@@ -1,1 +1,200 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<title>半導體員工反直覺戒菸問卷</title>
 
+<style>
+body{
+    font-family: Arial, "Segoe UI";
+    background:#eef2f7;
+    padding:20px;
+}
+
+.container{
+    max-width:850px;
+    margin:auto;
+    background:white;
+    padding:25px;
+    border-radius:12px;
+    box-shadow:0 4px 12px rgba(0,0,0,0.1);
+}
+
+h1{
+    text-align:center;
+}
+
+.progress{
+    width:100%;
+    background:#ddd;
+    border-radius:10px;
+    margin-bottom:20px;
+}
+
+.progress-bar{
+    height:12px;
+    width:0%;
+    background:#ff6b6b;
+    border-radius:10px;
+    transition:0.3s;
+}
+
+.question{
+    margin-bottom:20px;
+}
+
+.feedback{
+    font-size:14px;
+    color:#666;
+    margin-top:5px;
+}
+
+button{
+    padding:10px 20px;
+    background:#ff6b6b;
+    color:white;
+    border:none;
+    border-radius:6px;
+    cursor:pointer;
+}
+
+.result{
+    display:none;
+    margin-top:20px;
+    padding:15px;
+    background:#fff0f0;
+    border-radius:8px;
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>🚬 反直覺戒菸問卷（半導體員工版）</h1>
+
+<div class="progress">
+<div class="progress-bar" id="bar"></div>
+</div>
+
+<form id="quiz">
+
+<!-- Q1 -->
+<div class="question">
+<p>1️⃣ 下班或輪班後，你最常做的是：</p>
+<label><input type="radio" name="q1" value="A"> 抽菸放鬆</label><br>
+<label><input type="radio" name="q1" value="B"> 滑手機</label><br>
+<label><input type="radio" name="q1" value="C"> 吃東西</label><br>
+<label><input type="radio" name="q1" value="D"> 直接休息</label>
+<div class="feedback" id="f1"></div>
+</div>
+
+<!-- Q2 -->
+<div class="question">
+<p>2️⃣ 在高壓工作後，抽菸對你來說是：</p>
+<label><input type="radio" name="q2" value="A"> 必要的紓壓</label><br>
+<label><input type="radio" name="q2" value="B"> 習慣動作</label><br>
+<label><input type="radio" name="q2" value="C"> 可有可無</label><br>
+<label><input type="radio" name="q2" value="D"> 可替代行為</label>
+<div class="feedback" id="f2"></div>
+</div>
+
+<!-- Q3 -->
+<div class="question">
+<p>3️⃣ 同事揪抽菸時：</p>
+<label><input type="radio" name="q3" value="A"> 一定參加</label><br>
+<label><input type="radio" name="q3" value="B"> 大多參加</label><br>
+<label><input type="radio" name="q3" value="C"> 偶爾拒絕</label><br>
+<label><input type="radio" name="q3" value="D"> 可以拒絕</label>
+<div class="feedback" id="f3"></div>
+</div>
+
+<!-- Q4 -->
+<div class="question">
+<p>4️⃣ 壓力大時，你的第一反應：</p>
+<label><input type="radio" name="q4" value="A"> 想抽菸</label><br>
+<label><input type="radio" name="q4" value="B"> 想找出口</label><br>
+<label><input type="radio" name="q4" value="C"> 忍一下</label><br>
+<label><input type="radio" name="q4" value="D"> 有替代方式</label>
+<div class="feedback" id="f4"></div>
+</div>
+
+<!-- Q5 -->
+<div class="question">
+<p>5️⃣ 對戒菸的看法：</p>
+<label><input type="radio" name="q5" value="A"> 很難做到</label><br>
+<label><input type="radio" name="q5" value="B"> 想戒但失敗</label><br>
+<label><input type="radio" name="q5" value="C"> 有機會成功</label><br>
+<label><input type="radio" name="q5" value="D"> 可以規劃成功</label>
+<div class="feedback" id="f5"></div>
+</div>
+
+<button type="button" onclick="showResult()">看結果</button>
+
+</form>
+
+<div class="result" id="result"></div>
+
+</div>
+
+<script>
+
+const fb = {
+A:"👉 高度壓力紓解依賴",
+B:"👉 習慣性行為迴路",
+C:"👉 轉換期（有機會改善）",
+D:"👉 已具備行為改變條件"
+};
+
+const inputs = document.querySelectorAll("input");
+const total = 5;
+
+inputs.forEach(i=>{
+    i.addEventListener("change", ()=>{
+        let done = document.querySelectorAll("input:checked").length;
+        document.getElementById("bar").style.width = (done/total*100) + "%";
+
+        let q = i.name.replace("q","");
+        document.getElementById("f"+q).innerText = fb[i.value];
+    });
+});
+
+function showResult(){
+
+    let checked = document.querySelectorAll("input:checked");
+    if(checked.length < total){
+        alert("請完成所有題目");
+        return;
+    }
+
+    let count = {A:0,B:0,C:0,D:0};
+
+    checked.forEach(c=>{
+        count[c.value]++;
+    });
+
+    let resultText = "";
+
+    if(count.A >= 3){
+        resultText = "⚠️ 壓力依賴型：抽菸主要是情緒調節工具，而非習慣";
+    } else if(count.B >= 3){
+        resultText = "🔁 習慣迴路型：已形成固定 cue → 行為 → 放鬆模式";
+    } else if(count.C >= 3){
+        resultText = "🧠 轉換中：已開始脫離依賴，可介入成功率高";
+    } else {
+        resultText = "🚀 可改變型：具備高度成功戒菸潛力";
+    }
+
+    document.getElementById("result").style.display = "block";
+    document.getElementById("result").innerHTML =
+        "<b>結果分析：</b><br><br>" + resultText +
+        "<br><br>👉 關鍵不是『你戒不戒得掉』，而是『菸在幫你處理什麼壓力』";
+
+}
+
+</script>
+
+</body>
+</html>
