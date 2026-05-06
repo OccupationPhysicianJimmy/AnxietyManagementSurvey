@@ -68,7 +68,7 @@
   .grid-2-sm { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
   .grid-3 { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 12px; }
   .grid-4 { display: grid; grid-template-columns: repeat(4, minmax(0,1fr)); gap: 12px; }
-  .grid-5 { display: grid; grid-template-columns: repeat(5, minmax(0,1fr)); gap: 12px; }
+  .grid-5 { display: grid; grid-template-columns: repeat(4, minmax(0,1fr)); gap: 12px; }
   @media (max-width: 700px) { .grid-5 { grid-template-columns: 1fr 1fr; } }
   .grid-bottom { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 12px; }
   .article-link { display: flex; flex-direction: column; gap: 6px; background: var(--color-background-primary); border: 0.5px solid var(--color-border-tertiary); border-radius: var(--border-radius-lg); padding: 16px; text-decoration: none; color: inherit; transition: border-color .15s, background .15s; }
@@ -84,7 +84,6 @@
 </head>
 <body>
 <div class="page">
-
   <!-- Header -->
   <div style="border-bottom: 0.5px solid var(--color-border-tertiary); padding: 32px 0 28px;">
     <div class="grid-2">
@@ -115,7 +114,6 @@
       </div>
     </div>
   </div>
-
   <!-- Learn -->
   <div id="learn" style="padding-top:28px;">
     <p class="qi-section-label">了解焦慮</p>
@@ -134,9 +132,7 @@
       </div>
     </div>
   </div>
-
   <hr class="qi-divider">
-
   <!-- Articles -->
   <div id="articles">
     <p class="qi-section-label">延伸閱讀</p>
@@ -166,11 +162,24 @@
         <span class="al-title">是你交錯朋友，還是大腦欺騙你</span>
         <span class="al-arrow">→</span>
       </a>
+      <a href="FaceYourAnxiety.html" class="article-link">
+        <span class="al-tag">焦慮</span>
+        <span class="al-title">面對你的焦慮</span>
+        <span class="al-arrow">→</span>
+      </a>
+      <a href="FaceYourPoorSleep.html" class="article-link">
+        <span class="al-tag">睡眠</span>
+        <span class="al-title">面對你的失眠</span>
+        <span class="al-arrow">→</span>
+      </a>
+      <a href="FaceYourSmokingHabit.html" class="article-link">
+        <span class="al-tag">戒菸</span>
+        <span class="al-title">面對你的戒菸</span>
+        <span class="al-arrow">→</span>
+      </a>
     </div>
   </div>
-
   <hr class="qi-divider">
-
   <!-- Tools -->
   <div id="tools">
     <p class="qi-section-label">Support Tools</p>
@@ -193,9 +202,7 @@
       </div>
     </div>
   </div>
-
   <hr class="qi-divider">
-
   <!-- Bottom -->
   <div class="grid-bottom">
     <div class="qi-card">
@@ -210,7 +217,6 @@
       <button class="qi-btn-outline" style="margin-top:16px;font-size:13px;">了解更多資源</button>
     </div>
   </div>
-
 </div>
 </body>
 </html>
